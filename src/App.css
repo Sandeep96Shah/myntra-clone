@@ -1,0 +1,161 @@
+div{
+  margin: 0px;
+  padding: 0px;
+}
+p{
+  margin: 0px;
+  padding: 0px;
+}
+.navbar_container{
+  display: flex;
+  height: 80px;
+  justify-content: space-between;
+  box-shadow: 15px 0px 15px -10px rgba(0,0,0,0.75);
+}
+.dropdown_selection{
+  display: none;
+}
+.selection{
+  width: 50vw;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.selection div p{
+  font-weight: 700;
+  font-size: smaller;
+  color: #282c3f;
+}
+.myntra_logo{
+  height: 45px;
+  width: 40px;
+}
+.myntra_logo img{
+  height: inherit;
+  width: inherit;
+}
+#new_tag{
+  position: absolute;
+  top: -6px;
+  left: 53px;
+  color: red;
+  font-size: x-small;
+}
+.personal{
+  width: 45vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.search{
+  width: 60%;
+}
+.search_icon{
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  color: darkgray;
+}
+.dropdown_profile{
+  display: none;
+}
+.profile{
+  width: 35%;
+}
+.search input{
+  width: 100%;
+  height: 35px;
+  width: 88%;
+  padding-left: 40px;
+  border: none;
+  outline: none;
+  background-color: #f0f0f0;
+}
+.pos_relative{
+  position: relative;
+}
+.profile{
+  display: flex;
+  justify-content: space-evenly;
+  height: 40px;
+}
+.profile div{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.profile .title{
+  font-size: small;
+}
+@media screen and (max-width: 1000px){
+  .selection {
+    width: 60vw;
+  }
+  .personal {
+    width: 35vw;
+  }
+  .search {
+    width: 40%;
+  }
+  .profile {
+    width: 50%;
+  }
+}
+@media screen and (max-width: 800px){
+  .navbar_container{
+    justify-content: center;
+  }
+  .selection{
+    display: none;
+  }
+  .dropdown_selection{
+    position: fixed;
+    left: 50px;
+    display: flex;
+    flex-direction: column;
+    top: 25px;
+    font-size: xx-large;
+  }
+  .profile{
+    display: none;
+  }
+  .dropdown_profile{
+    position: fixed;
+    right: 50px;
+    display: flex;
+    flex-direction: column;
+    top: 25px;
+    font-size: xx-large;
+  }
+  .personal{
+    width: 65vw;
+  }
+  .search{
+    width: 100%;
+  }
+  .selection_list{
+    margin-top: 25px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    margin-left: -20px;
+  }
+  .selection_list div p{
+    border-bottom: 1px solid gray;
+    font-size: 25px;
+  }
+  .profile_list{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 100px;
+    right: 30px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    height: 158px;
+    justify-content: space-between;
+  }
+  .profile_list div{
+    display: flex;
+  }
+}
