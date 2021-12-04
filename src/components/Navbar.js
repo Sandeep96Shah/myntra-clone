@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { FaUser, FaHeart, FaShoppingBag, FaSearch, FaBars } from 'react-icons/fa';
+import { Link } from "react-router-dom";
+import { normalDisplay } from '../action';
+import { connect } from 'react-redux';
 import logo from '../images/logo.png';
 import '../App.css';
+import { showWishlist, search } from '../action/index';
 
 class Navbar extends Component {
     constructor(props){
@@ -9,6 +13,7 @@ class Navbar extends Component {
         this.state={
             display_selection:true,
             display_profile:false,
+            searchProducts:"",
         }
     }
     handleDisplaySelection = () => {
@@ -21,7 +26,24 @@ class Navbar extends Component {
             display_profile:!this.state.display_profile,
         })
     }
+
+    handleNormalDisplay = () => {
+        this.props.dispatch(normalDisplay());
+    }
+
+    handleShowWishlist = () => {
+        this.props.dispatch(showWishlist());
+        console.log("reached wishlist event");
+    }
+
+    handleSearch = (e) => {
+        if(e.key === 'Enter'){
+            this.props.dispatch(search(this.state.searchProducts));
+        }
+    }
+
     render() {
+        console.log("searchhhh", this.state.searchProducts);
         return (
             <div className="navbar_container">
                 <div className="dropdown_selection">
@@ -39,9 +61,9 @@ class Navbar extends Component {
                    }
                 </div>
                 <div className="selection">
-                    <div className="myntra_logo">
-                        <img src={logo} />
-                    </div>
+                    <Link to="/"><div className="myntra_logo">
+                        <img src={logo} onClick={ () => this.handleNormalDisplay() }/>
+                    </div></Link>
                     <div><p>MEN</p></div>
                     <div><p>WOMEN</p></div>
                     <div><p>KIDS</p></div>
@@ -52,16 +74,21 @@ class Navbar extends Component {
                 <div className="personal">
                     <div className="search pos_relative">
                         <FaSearch className="search_icon"/>
-                        <input type="text" placeholder="search for products, brands and more" />
+                        <input 
+                            type="text" 
+                            placeholder="search for products, brands and more" 
+                            onChange={ (e) => this.setState({searchProducts:e.target.value}) }
+                            onKeyPress={ (e) => this.handleSearch(e) }
+                            />
                     </div>
                     <div className="profile">
                         <div>
                             <div><FaUser /></div>
                             <div className="title">Profile</div>
                         </div>
-                        <div>
+                        <div onClick={ () => this.handleShowWishlist() } >
                             <div><FaHeart /></div>
-                            <div className="title">Wishlist</div>
+                            <div className="title" >Wishlist</div>
                         </div>
                         <div>
                             <div><FaShoppingBag /></div>
@@ -95,4 +122,11 @@ class Navbar extends Component {
     }
 }
 
-export default Navbar;
+function mapStateToProps(state) {
+    return {
+      state,
+    };
+}
+  
+
+export default connect(mapStateToProps)(Navbar);

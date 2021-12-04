@@ -1,19 +1,12 @@
 {
-  "posts": [
+  "products": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "name": "abcd",
+      "price": "40 42 44",
+      "size": "40 42 44",
+      "description": "Good to wear",
+      "image": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fpaytmmall.com%2Fsur-t-men-grey-checked-slim-fit-casual-shirt-CMPLXAPPSUR-T-MEN-COPATE2956072B022AAD-pdp&psig=AOvVaw2VUvMwg7XmjvLdF7Gd-gc1&ust=1638610488167000&source=images&cd=vfe&ved=2ahUKEwi72Ozxqcf0AhUGXCsKHc_SAt8Qr4kDegUIARDbAQ"
     }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
