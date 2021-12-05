@@ -5,19 +5,10 @@ import { products } from '../db.json';
 import  Product from './Product';
 import Sort from './Sort';
 import { lowToHigh, highToLow, viewSimilar, removeFromWishlist, removeFromBag } from '../action/index';
-//checking with the filter
 import Filter from './Filter';
 
 
 class ProductItem extends Component {
-
-    //dispatch an action to take data from the db.json and store it in the store
-    // constructor(props){
-    //     super(props);
-    //     this.state={
-    //         showFilter:true,
-    //     }
-    // }
     componentDidMount() {
         console.log("data", products);
         this.props.dispatch(movies(products));
@@ -53,8 +44,6 @@ class ProductItem extends Component {
 
     render() {
         const { products, sorted_products, wishList, bag,  isSorted, isProducts, isWishList, isBag, isSearch, search, isViewSimilar, viewSimilar, isFilter, filter  } = this.props.state;
-        console.log("products", products, isSorted);
-        console.log("props", this.props.state);
         const displayProducts = isSorted ? sorted_products : isWishList ? wishList : isBag ? bag : isSearch ? search : isViewSimilar ? viewSimilar : isFilter ? filter: products;
         return (
             <div>

@@ -17,8 +17,6 @@ const Product = (props) => {
         props.dispatch(addToWishlist(props.product, "38"));
     }
 
-
-    console.log("ppppppp", props);
     const { handleViewSimilar, handleRemoveFromWishlist, handleRemoveFromBag } = props;
     const { isViewSimilar, isBag, isWishList } = props.state;
     return (

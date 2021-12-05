@@ -33,7 +33,6 @@ class Navbar extends Component {
 
     handleShowWishlist = () => {
         this.props.dispatch(showWishlist());
-        console.log("reached wishlist event");
     }
 
     handleSearch = (e) => {
@@ -50,23 +49,8 @@ class Navbar extends Component {
     }
 
     render() {
-        console.log("searchhhh", this.state.searchProducts);
         return (
             <div className="navbar_container">
-                {/* <div className="dropdown_selection">
-                    <FaBars onClick={ () => this.handleDisplaySelection() }/>
-                   {
-                       this.state.display_selection &&
-                       <div className="selection_list">
-                            <div><p>MEN</p></div>
-                            <div><p>WOMEN</p></div>
-                            <div><p>KIDS</p></div>
-                            <div><p>HOME & LIVING</p></div>
-                            <div><p>BEAUTY</p></div>
-                            <div className="pos_relative"><p>STUDIO</p><p id="new_tag">NEW</p></div>
-                       </div>
-                   }
-                </div> */}
                 <div className="dropdown_selection">
                     <Link to="/"><div className="myntra_logo">
                             <img src={logo} onClick={ () => this.handleNormalDisplay() }/>

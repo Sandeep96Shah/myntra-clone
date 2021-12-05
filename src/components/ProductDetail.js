@@ -3,6 +3,7 @@ import { FaArrowRight, FaHeart  } from 'react-icons/fa';
 import {useLocation, useNavigate} from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addToWishlist, addToBag } from '../action';
+import ZoomImage from './ZoomImage';
 
 import '../Details.css';
 
@@ -14,10 +15,9 @@ const ProductDetail = (props) => {
         const [ size42, setSize42 ] = useState(false);
         const [ size44, setSize44 ] = useState(false);
         const [ size46, setSize46 ] = useState(false);
+        const [ showZoom, setShowZoom ] = useState(false);
         const location = useLocation();
-        console.log("useLocation", location.state);
         const { name, description, price, id, image } = location.state.product;
-
         let navigate = useNavigate();
         const handleWishlist = () => {
             props.dispatch(addToWishlist(location.state.product, value));
@@ -65,17 +65,20 @@ const ProductDetail = (props) => {
 
         const prod=location.state.product;
         const handleAddToBag = () => {
-            console.log("bagggg", prod, value);
             props.dispatch(addToBag(prod,value));
             navigate('/');
         }
 
-        console.log("selected size value", value);
+        const handleZoom = () => {
+            setShowZoom(!showZoom);
+        }
+
         return (
-            <div className="detail_outer_container">
+           <div className="detail_outer_container">
                 <div className="detail_container">
                 <div className="detail_image">
-                    <img src={image} />
+                    <img src={image} onClick={ () => handleZoom() } />
+                    {/* <ZoomImage picture={image} handleZoom={handleZoom} /> */}
                 </div>
                 <div className="detail_description">
                     <div className="detail_div1">
@@ -101,7 +104,10 @@ const ProductDetail = (props) => {
                     </div>
                 </div>
                 </div>
-            </div>
+                {/* { showZoom && <ZoomImage picture={image} handleZoom={handleZoom} />} */}
+            </div> 
+            // <ZoomImage picture={image} handleZoom={handleZoom} /> }
+        
         )
 }
 

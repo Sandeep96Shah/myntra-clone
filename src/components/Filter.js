@@ -14,9 +14,6 @@ class Filter extends Component {
     }
 
     handleBrand = (e) => {
-        // console.log("Brand", e.target.value);
-        // console.log("checked", e.target.checked);
-        // console.log("Brand", e.target.value);
         if(e.target.checked){
             this.setState({
                 brand:[...this.state.brand, e.target.value],
@@ -31,14 +28,12 @@ class Filter extends Component {
     }
 
     handleCategory = (e) => {
-        console.log("category",e.target.value);
         this.setState({
             category:e.target.value,
         })
     }
 
     handleCategory1 = (e) => {
-        console.log("cat",e.target.value);
         this.setState({
             cat:e.target.value,
         })
@@ -46,20 +41,18 @@ class Filter extends Component {
 
     handleShowFilter = () => {
         const { cat, category, brand } = this.state;
-        console.log("handleShowFilter");
-        console.log("xxxxxxxxxxx", cat, category, brand);
-        this.props.dispatch(showFilter(cat,category,brand));
-        this.setState({
-            cat:"",
-            category:"",
-            brand:[],
-        })
+        if(cat != "" || category != "" || brand.length != 0){
+            this.props.dispatch(showFilter(cat,category,brand));
+            this.setState({
+                cat:"",
+                category:"",
+                brand:[],
+            })
+        }
+        
     }
 
     render() {
-        console.log("brand Selection", this.state.brand);
-        console.log("Cat", this.state.cat);
-        console.log("category", this.state.category);
         return (
             <div className="filter_container">
                 <p className="filter_title">Filter</p>

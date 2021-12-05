@@ -21,7 +21,6 @@ class Sort extends Component {
         return (
             <>
             <div className="sort_container">
-                {/* <div className="filter" onClick={ () => this.handleClick() }><p>Filter</p></div> */}
                
                 <div className="sort">
                     <div className="sort_btn"><p onClick={ () => handleSortLowToHigh(products) } >Low-High</p></div>
