@@ -21,7 +21,7 @@ class ProductItem extends Component {
     componentDidMount() {
         console.log("data", products);
         this.props.dispatch(movies(products));
-        localStorage.setItem('bag', JSON.stringify({"hello":"hello"}));
+        localStorage.setItem('bag', JSON.stringify({"bag":[]}));
     }
     
     handleSortLowToHigh = (products) => {

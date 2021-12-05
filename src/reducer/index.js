@@ -21,9 +21,12 @@ const initialState={
 export default function products(state=initialState, action){
     switch(action.type){
         case PRODUCTS:
+            //let localBagProducts=JSON.parse(localStorage.getItem('bag'));
+            //console.log("localBagProducts", localBagProducts);
             return{
                 ...state,
                 products:action.products,
+                //bag:[...localBagProducts.bag],
             }
         case NORMAL:
             return{
@@ -99,7 +102,10 @@ export default function products(state=initialState, action){
         case ADD_TO_WISHLIST:
             //try to add the size later
             console.log("product added to the wishlist", action.product);
-            state.wishList.push(action.product); 
+            let indexWishlist=state.wishList.findIndex(prod => prod.id == action.product.id);
+            if(indexWishlist == -1){
+                state.wishList.push(action.product);
+            } 
             return{
                 ...state,
             }
@@ -164,13 +170,25 @@ export default function products(state=initialState, action){
                 isFilter:false,
             }
         case ADD_TO_BAG:
-            state.bag.push(action.product); 
-            var localBag=JSON.parse(localStorage.getItem('bag'))
+            // console.log("ssss", state.bag);
+            // console.log("xxxggg", action.product.id);
+            let indexBag=state.bag.findIndex(prod => prod.id == action.product.id);
+            let localBag;
+            if(indexBag == -1){
+                state.bag.push(action.product);
+                localBag=JSON.parse(localStorage.getItem('bag'));
+                localBag.bag.push(action.product);
+                console.log("after inserting into bag", localBag.bag);
+                //localStorage.setItem('bag', JSON.stringify({"bag":localBag.bag}));
+            }
+             
+            
             //localBag.push(action.product);
             //localStorage.setItem('bag',localBag);
-            console.log("localBag", localBag);
+            //console.log("localBag", localBag);
             return{
                 ...state,
+                bag:localBag.bag,
             }
         case REMOVE_FROM_BAG:
             const newBag=state.bag.filter(prod => prod.id != action.id);

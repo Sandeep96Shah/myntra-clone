@@ -31,13 +31,14 @@ class Filter extends Component {
     }
 
     handleCategory = (e) => {
-        //console.log("category",e.target.value);
+        console.log("category",e.target.value);
         this.setState({
             category:e.target.value,
         })
     }
 
     handleCategory1 = (e) => {
+        console.log("cat",e.target.value);
         this.setState({
             cat:e.target.value,
         })
@@ -46,6 +47,7 @@ class Filter extends Component {
     handleShowFilter = () => {
         const { cat, category, brand } = this.state;
         console.log("handleShowFilter");
+        console.log("xxxxxxxxxxx", cat, category, brand);
         this.props.dispatch(showFilter(cat,category,brand));
         this.setState({
             cat:"",
@@ -63,31 +65,31 @@ class Filter extends Component {
                 <p className="filter_title">Filter</p>
                 <div className="category_container" onChange={ (e) => this.handleCategory1(e) }>
                     <input type="radio" name="cat" value="men" />
-                    <label for="cat">Men</label><br />
+                    <label htmlFor="cat">Men</label><br />
                     <input type="radio" name="cat" value="women" />
-                    <label for="cat">Women</label><br />
+                    <label htmlFor="cat">Women</label><br />
                     <input type="radio" name="cat" value="boys" />
-                    <label for="cat">Boys</label><br />
+                    <label htmlFor="cat">Boys</label><br />
                     <input type="radio" name="cat" value="girls" />
-                    <label for="cat">Girls</label><br />
+                    <label htmlFor="cat">Girls</label><br />
                 </div>
                 <div className="category_container" onChange={ (e) => this.handleCategory(e) }>
                     <p className="category_title">Category</p>
-                    <input type="radio" name="cat" value="fullSleeve" />
-                    <label for="sex">Fullsleeve</label><br />
+                    <input type="radio" name="category" value="fullSleeve" />
+                    <label htmlFor="category">Fullsleeve</label><br />
                     <input type="radio" name="cat" value="halfSleeve" />
-                    <label for="sex">halfsleeve</label><br />
+                    <label htmlFor="category">halfsleeve</label><br />
                 </div>
                 <div className="category_container">
                     <p className="category_title">Brand</p>
                     <input type="checkbox" name="brand" value="Parx Shirts" onChange={ (e) => this.handleBrand(e) }/>
-                    <label for="sex">Parx Shirts</label><br />
+                    <label htmlFor="brand">Parx Shirts</label><br />
                     <input type="checkbox" name="brand" value="Arrow Shirts" onChange={ (e) => this.handleBrand(e) } />
-                    <label for="sex">Arrow Shirt</label><br />
+                    <label htmlFor="brand">Arrow Shirt</label><br />
                     <input type="checkbox" name="brand" value="Zodiac Shirts" onChange={ (e) => this.handleBrand(e) } />
-                    <label for="sex">Zodiac Shirts</label><br />
+                    <label htmlFor="brand">Zodiac Shirts</label><br />
                     <input type="checkbox" name="brand" value="Lee Shirts" onChange={ (e) => this.handleBrand(e) } />
-                    <label for="sex">Lee Shirt</label><br />
+                    <label htmlFor="brand">Lee Shirt</label><br />
                 </div>
                 <div className="filter_btn" onClick={ () => this.handleShowFilter() }>Filter</div>
             </div>
