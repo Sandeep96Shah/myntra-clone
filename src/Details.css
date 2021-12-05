@@ -154,3 +154,8 @@
         width: 75%;
     }
 }
+@media screen and (max-width: 350px){
+    .detail_container{
+        height: 60%;
+    }
+}

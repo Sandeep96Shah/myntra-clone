@@ -21,7 +21,13 @@ class ProductItem extends Component {
     componentDidMount() {
         console.log("data", products);
         this.props.dispatch(movies(products));
-        localStorage.setItem('bag', JSON.stringify({"bag":[]}));
+        let localBagProduct = JSON.parse(localStorage.getItem('bag'));
+        let bagProducts= localBagProduct ? localBagProduct : [];
+        localStorage.setItem('bag', JSON.stringify(bagProducts));
+        //wishlist
+        let localWishlistProduct = JSON.parse(localStorage.getItem('wishlist'));
+        let wishlistProducts = localWishlistProduct ? localWishlistProduct : [];
+        localStorage.setItem('wishlist', JSON.stringify(wishlistProducts));
     }
     
     handleSortLowToHigh = (products) => {

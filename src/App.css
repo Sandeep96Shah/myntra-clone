@@ -84,6 +84,7 @@ p{
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  cursor: pointer;
 }
 .profile .title{
   font-size: smaller;

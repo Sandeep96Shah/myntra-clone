@@ -21,12 +21,18 @@ const initialState={
 export default function products(state=initialState, action){
     switch(action.type){
         case PRODUCTS:
-            //let localBagProducts=JSON.parse(localStorage.getItem('bag'));
-            //console.log("localBagProducts", localBagProducts);
+            let localBagProducts = JSON.parse(localStorage.getItem('bag'));
+             if(localBagProducts){
+                state.bag=localBagProducts;
+             }
+
+            let localWishlistProducts = JSON.parse(localStorage.getItem('wishlist'));
+            if(localWishlistProducts){
+                state.wishList=localWishlistProducts;
+            }
             return{
                 ...state,
                 products:action.products,
-                //bag:[...localBagProducts.bag],
             }
         case NORMAL:
             return{
@@ -93,19 +99,18 @@ export default function products(state=initialState, action){
                 ...state,
                 isSorted:true,
                 sorted_products:sortedProductsHL,
-                // isBag:false,
-                // isProducts:false,
-                // isWishList:false,
-                // isSearch:false,
-                
             }
         case ADD_TO_WISHLIST:
-            //try to add the size later
             console.log("product added to the wishlist", action.product);
             let indexWishlist=state.wishList.findIndex(prod => prod.id == action.product.id);
+            let localWishlist;
             if(indexWishlist == -1){
                 state.wishList.push(action.product);
-            } 
+                localWishlist=JSON.parse(localStorage.getItem('wishlist'));
+                localWishlist=localWishlist ? localWishlist : [];
+                localWishlist.push(action.product);
+                localStorage.setItem('wishlist', JSON.stringify(localWishlist));
+            }
             return{
                 ...state,
             }
@@ -154,6 +159,7 @@ export default function products(state=initialState, action){
             }
         case REMOVE_FROM_WISHLIST:
             const newWishlist=state.wishList.filter(prod => prod.id != action.id);
+            localStorage.setItem('wishlist', JSON.stringify(newWishlist));
             return{
                 ...state,
                 wishList:newWishlist,
@@ -170,36 +176,29 @@ export default function products(state=initialState, action){
                 isFilter:false,
             }
         case ADD_TO_BAG:
-            // console.log("ssss", state.bag);
-            // console.log("xxxggg", action.product.id);
             let indexBag=state.bag.findIndex(prod => prod.id == action.product.id);
             let localBag;
             if(indexBag == -1){
                 state.bag.push(action.product);
                 localBag=JSON.parse(localStorage.getItem('bag'));
-                localBag.bag.push(action.product);
-                console.log("after inserting into bag", localBag.bag);
-                //localStorage.setItem('bag', JSON.stringify({"bag":localBag.bag}));
+                localBag=localBag ? localBag : [];
+                localBag.push(action.product);
+                console.log("after inserting into bag", localBag);
+                localStorage.setItem('bag', JSON.stringify(localBag));
             }
              
-            
-            //localBag.push(action.product);
-            //localStorage.setItem('bag',localBag);
-            //console.log("localBag", localBag);
             return{
                 ...state,
-                bag:localBag.bag,
             }
         case REMOVE_FROM_BAG:
             const newBag=state.bag.filter(prod => prod.id != action.id);
+            localStorage.setItem('bag', JSON.stringify(newBag));
             return{
                 ...state,
                 bag:newBag,
             } 
         case FILTER:
-            // console.log("cat", action.cat);
-            // console.log("category", action.category);
-            // console.log("brand", action.brand);
+            
             let showFilter;
             if(action.cat){
                 showFilter=state.products.filter( prod => prod.for == action.cat);
