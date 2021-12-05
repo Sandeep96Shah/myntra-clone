@@ -110,3 +110,47 @@
     font-size: medium;
     font-weight: 600;
 }
+.selected_size{
+    border: 1px solid red;
+    color: red;
+}
+@media screen and (max-width: 900px){
+    .size_range div{
+        height: 36px;
+        width: 35px;
+        font-size: larger;
+        font-weight: 500;
+    }
+    .bag{
+        font-size: small;
+    }
+    .wishlist{
+        font-size: small;
+    }
+}
+@media screen and (max-width: 800px){
+    .detail_container{
+        width: 85%;
+    }
+}
+@media screen and (max-width: 600px){
+    .detail_container{
+        width: 95%;
+    }
+}
+@media screen and (max-width: 500px){
+    .choose div{
+        margin-right: 5px;
+        width: 45%;
+    }
+    .detail_container{
+        flex-direction: column;
+    }
+    .detail_description{
+        width: 100%;
+    }
+    .detail_image{
+        margin-left: 15%;
+        width: 75%;
+    }
+}

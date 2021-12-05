@@ -5,7 +5,7 @@ import { normalDisplay } from '../action';
 import { connect } from 'react-redux';
 import logo from '../images/logo.png';
 import '../App.css';
-import { showWishlist, search } from '../action/index';
+import { showWishlist, search, showBag } from '../action/index';
 
 class Navbar extends Component {
     constructor(props){
@@ -39,14 +39,21 @@ class Navbar extends Component {
     handleSearch = (e) => {
         if(e.key === 'Enter'){
             this.props.dispatch(search(this.state.searchProducts));
+            this.setState({
+                searchProducts:"",
+            })
         }
+    }
+
+    handleShowBag = () => {
+        this.props.dispatch(showBag());
     }
 
     render() {
         console.log("searchhhh", this.state.searchProducts);
         return (
             <div className="navbar_container">
-                <div className="dropdown_selection">
+                {/* <div className="dropdown_selection">
                     <FaBars onClick={ () => this.handleDisplaySelection() }/>
                    {
                        this.state.display_selection &&
@@ -59,6 +66,11 @@ class Navbar extends Component {
                             <div className="pos_relative"><p>STUDIO</p><p id="new_tag">NEW</p></div>
                        </div>
                    }
+                </div> */}
+                <div className="dropdown_selection">
+                    <Link to="/"><div className="myntra_logo">
+                            <img src={logo} onClick={ () => this.handleNormalDisplay() }/>
+                        </div></Link>
                 </div>
                 <div className="selection">
                     <Link to="/"><div className="myntra_logo">
@@ -76,7 +88,7 @@ class Navbar extends Component {
                         <FaSearch className="search_icon"/>
                         <input 
                             type="text" 
-                            placeholder="search for products, brands and more" 
+                            placeholder="search for products" 
                             onChange={ (e) => this.setState({searchProducts:e.target.value}) }
                             onKeyPress={ (e) => this.handleSearch(e) }
                             />
@@ -90,7 +102,7 @@ class Navbar extends Component {
                             <div><FaHeart /></div>
                             <div className="title" >Wishlist</div>
                         </div>
-                        <div>
+                        <div onClick={ () => this.handleShowBag() } >
                             <div><FaShoppingBag /></div>
                             <div className="title">Bag</div>
                         </div>
@@ -101,10 +113,10 @@ class Navbar extends Component {
                         {
                             this.state.display_profile &&
                             <div className="profile_list">
-                                 <div>
+                                 {/* <div>
                                     <div><FaUser /></div>
                                     <div className="title">Profile</div>
-                                </div>
+                                </div> */}
                                 <div>
                                     <div><FaHeart /></div>
                                     <div className="title">Wishlist</div>

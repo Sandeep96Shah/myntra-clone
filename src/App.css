@@ -86,7 +86,12 @@ p{
   align-items: center;
 }
 .profile .title{
-  font-size: small;
+  font-size: smaller;
+}
+@media screen and (max-width: 1308px){
+  .item_container{
+    width: 21% !important;
+  }
 }
 @media screen and (max-width: 1000px){
   .selection {
@@ -101,6 +106,15 @@ p{
   .profile {
     width: 50%;
   }
+  .filter_container{
+    display:none;
+  }
+}
+
+@media screen and (max-width: 900px){
+  .item_container{
+    width: 30% !important;
+  }
 }
 @media screen and (max-width: 800px){
   .navbar_container{
@@ -110,23 +124,29 @@ p{
     display: none;
   }
   .dropdown_selection{
-    position: fixed;
+    /* position: fixed;
     left: 50px;
     display: flex;
     flex-direction: column;
     top: 25px;
-    font-size: xx-large;
+    font-size: xx-large; */
+    display: flex;
+      position: absolute;
+      height: 30px;
+      width: 30px;
+      top: 16px;
+      left: 33px;
   }
   .profile{
     display: none;
   }
   .dropdown_profile{
-    position: fixed;
-    right: 50px;
     display: flex;
     flex-direction: column;
-    top: 25px;
     font-size: xx-large;
+    position: absolute;
+    top: 23px;
+    right: 7%;
   }
   .personal{
     width: 65vw;
@@ -148,15 +168,82 @@ p{
     display: flex;
     flex-direction: column;
     position: fixed;
-    top: 100px;
-    right: 30px;
+    top: 85px;
+    right: 10px;
     padding: 10px;
     background-color: #f0f0f0;
     height: 158px;
-    justify-content: space-between;
+    height: 60px;
   }
   .profile_list div{
     display: flex;
+    font-size:smaller
+  }
+}
+
+@media screen and (max-width: 713px){
+  .item_container{
+    width: 40% !important;
+    margin: 0px 20px;
+  }
+  .sort_container{
+    margin-top: 10px;
+  }
+  .sort{
+    margin-right: 25px !important;
+  }
+  .sort_btn{
+    font-size: smaller;
+    font-weight: 600;
+  }
+}
+@media screen and (max-width: 619px){
+  .item_container{
+    width: 50% !important;
+    margin: 0px 20px;
+    margin-left: 20%;
+  }
+}
+@media screen and (max-width: 400px){
+  .navbar_container{
+    height: 70px;
+  }
+  .search{
+    width: 85%;
+  }
+  .search input{
+    height: 28px;
+  }
+  .dropdown_selection{
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    top: 16px;
+    left: 15px;
+  }
+  .myntra_logo{
+    height: 35px;
+    width: 35px;
+  }
+  .dropdown_profile{
+    position: absolute;
+    top: 18px;
+    right: 7%;
+  }
+  .sort_container{
+    height: 30px !important;
+    margin-top: 10px !important;
+  }
+  .sort{
+    margin-right: 25px !important;
+  }
+  .sort_btn{
+    padding: 3px 5px !important;
+    font-size: small !important;
+  }
+  .item_container{
+    width: 70% !important;
+    margin-right: 10% !important;
   }
 }
 .products_list{
@@ -173,10 +260,50 @@ p{
 .item_image{
   height: 70%;
   width: 100%;
+  position: relative;
+}
+.item_image:hover > img{
+  height: 90%;
+}
+.item_image:hover .wishlistOption{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.item_image:hover .wishlistOption p{
+  border: 1px solid gray;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    color: gray;
+    cursor: pointer;
 }
 .item_image img{
   height: 100%;
   width: 100%;
+  cursor: pointer;
+}
+.wishlistOption{
+  display: none;
+  
+}
+.view_similar{
+  position: absolute;
+  top: 160px;
+  left: 42px;
+  width: 100px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  font-size: larger;
+  background-color: lightgray;
+  color: red;
+  
+}
+.item_image:hover > .view_similar{
+  display: flex;
   cursor: pointer;
 }
 .item_details{
@@ -211,7 +338,7 @@ p{
   height: 40px;
   margin-top: 20px;
   display: flex;
-  justify-content: space-between;
+  justify-content: end;
 }
 .filter{
   padding: 10px 5px;
@@ -222,5 +349,53 @@ p{
   justify-content: center;
   align-items: center;
   font-size: x-large;
+  cursor: pointer;
+}
+.remove_btn{
+  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* padding: 10px; */
+  font-size: x-large;
+  cursor: pointer;
+}
+.main_body{
+  display: flex;
+  border-top: 1px solid lightgray;
+  margin-top: 5px;
+}
+.filter_container{
+  width: 25%;
+  padding-left: 10px;
+  border-right: 1px solid gray;
+  max-width: 179px;
+  min-width:179px;
+}
+.category_container{
+  border-bottom: 1px solid gray;
+  padding: 20px 10px;
+}
+.category_title{
+  margin-bottom: 5px;
+}
+.filter_title{
+  font-size: x-large;
+  font-weight: 500;
+  margin-left: 30px;
+}
+.filter_btn{
+  border: 1px solid blue;
+  width: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 40px;
+  margin-top: 30px;
+  padding: 0px 10px;
+  font-size: x-large;
+  background-color: blue;
+  color: white;
+  border-radius: 10px;
   cursor: pointer;
 }
