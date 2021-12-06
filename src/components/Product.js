@@ -19,12 +19,12 @@ const Product = (props) => {
     }
 
     const { handleViewSimilar, handleRemoveFromWishlist, handleRemoveFromBag } = props;
-    const { isViewSimilar, isBag, isWishList } = props.state;
+    const { isViewSimilar, isBag, isWishList, isProducts, isFilter } = props.state;
     return (
         <div className="item_container">                
             <div className="item_image">
-                <img src={image} onClick={ () => handleClick() } />
-               { !isViewSimilar && <div className="view_similar" onClick={ () => handleViewSimilar(price) } ><p>Similar</p></div> }
+                <img src={image} onClick={ () => isBag || isWishList ? " " : handleClick() } />
+               { (isProducts || isFilter) && <div className="view_similar" onClick={ () => handleViewSimilar(price) } ><p>Similar</p></div> }
                { !isWishList && <div className="wishlistOption" onClick={ () => handleWishlist() } ><p>Wishlist</p></div>}
             </div>
             <div className="item_details">
