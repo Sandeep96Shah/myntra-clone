@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { addToWishlist } from '../action';
 
 
+
 const Product = (props) => {
     const { name, price, description, image, id } = props.product;
     
@@ -20,7 +21,7 @@ const Product = (props) => {
     const { handleViewSimilar, handleRemoveFromWishlist, handleRemoveFromBag } = props;
     const { isViewSimilar, isBag, isWishList } = props.state;
     return (
-        <div className="item_container">                 
+        <div className="item_container">                
             <div className="item_image">
                 <img src={image} onClick={ () => handleClick() } />
                { !isViewSimilar && <div className="view_similar" onClick={ () => handleViewSimilar(price) } ><p>Similar</p></div> }

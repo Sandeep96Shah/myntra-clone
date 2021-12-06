@@ -452,3 +452,28 @@ p{
     border-radius: 10px;
     top: -48px;
 }
+.no_products{
+  height: 60vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: jus;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.no_products_title{
+  font-size: x-large;
+  margin-bottom: 25px
+}
+.no_products_btn{
+  background-color: blue;
+    font-size: x-large;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    padding: 5px 10px;
+    color: wheat;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}

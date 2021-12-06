@@ -4,13 +4,12 @@ import { movies } from '../action/index';
 import { products } from '../db.json';
 import  Product from './Product';
 import Sort from './Sort';
-import { lowToHigh, highToLow, viewSimilar, removeFromWishlist, removeFromBag } from '../action/index';
+import { lowToHigh, highToLow, viewSimilar, removeFromWishlist, removeFromBag, normalDisplay } from '../action/index';
 import Filter from './Filter';
 
 
 class ProductItem extends Component {
     componentDidMount() {
-        console.log("data", products);
         this.props.dispatch(movies(products));
         let localBagProduct = JSON.parse(localStorage.getItem('bag'));
         let bagProducts= localBagProduct ? localBagProduct : [];
@@ -42,6 +41,10 @@ class ProductItem extends Component {
         this.props.dispatch(removeFromBag(id));
     }
 
+    handleNormalDisplay = () => {
+        this.props.dispatch(normalDisplay());
+    }
+
     render() {
         const { products, sorted_products, wishList, bag,  isSorted, isProducts, isWishList, isBag, isSearch, search, isViewSimilar, viewSimilar, isFilter, filter  } = this.props.state;
         const displayProducts = isSorted ? sorted_products : isWishList ? wishList : isBag ? bag : isSearch ? search : isViewSimilar ? viewSimilar : isFilter ? filter: products;
@@ -51,11 +54,20 @@ class ProductItem extends Component {
                 <div className="main_body">
                     <Filter />
                     
-                    <div className="products_list">
+                   { displayProducts.length > 0 ? <div className="products_list">
                         {
                             displayProducts.map(prod => <Product product={prod} key={prod.id} handleViewSimilar={this.handleViewSimilar} handleRemoveFromWishlist={this.handleRemoveFromWishlist} handleRemoveFromBag={this.handleRemoveFromBag}  /> )
                         }
-                    </div>
+                    </div> : 
+                    <div className="no_products">
+                        <div className="no_products_title">
+                            <p>Nothing is Present, Please add products!</p>
+                        </div>
+                        <div className="no_products_btn" onClick={ () => this.handleNormalDisplay() }>
+                            <p>Add</p>
+                        </div>
+                    </div> 
+                    }
                 </div>
             </div>
         )

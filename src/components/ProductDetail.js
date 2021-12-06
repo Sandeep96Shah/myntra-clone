@@ -4,7 +4,6 @@ import {useLocation, useNavigate} from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addToWishlist, addToBag } from '../action';
 import ZoomImage from './ZoomImage';
-
 import '../Details.css';
 
 const ProductDetail = (props) => {
@@ -65,6 +64,7 @@ const ProductDetail = (props) => {
 
         const prod=location.state.product;
         const handleAddToBag = () => {
+            
             props.dispatch(addToBag(prod,value));
             navigate('/');
         }
