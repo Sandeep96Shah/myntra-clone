@@ -33,6 +33,9 @@ class Navbar extends Component {
 
     handleShowWishlist = () => {
         this.props.dispatch(showWishlist());
+        this.setState({
+            display_profile:false,
+        })
     }
 
     handleSearch = (e) => {
@@ -46,6 +49,9 @@ class Navbar extends Component {
 
     handleShowBag = () => {
         this.props.dispatch(showBag());
+        this.setState({
+            display_profile:false,
+        })
     }
 
     render() {
@@ -101,11 +107,11 @@ class Navbar extends Component {
                                     <div><FaUser /></div>
                                     <div className="title">Profile</div>
                                 </div> */}
-                                <div>
+                                <div onClick={ () => this.handleShowWishlist() }>
                                     <div><FaHeart /></div>
                                     <div className="title">Wishlist</div>
                                 </div>
-                                <div>
+                                <div onClick={ () => this.handleShowBag() }>
                                     <div><FaShoppingBag /></div>
                                     <div className="title">Bag</div>
                                 </div>

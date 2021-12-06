@@ -190,6 +190,15 @@ p{
   .profile_list{
     height: 65px;
   }
+  .zoomImage_container{
+    width: 84vw !important;
+  }
+  .zoomImage{
+    width: 42vw !important;
+  }
+  .cancel_btn{
+    font-size: larger !important;
+  }
 }
 
 @media screen and (max-width: 713px){
@@ -213,6 +222,14 @@ p{
     width: 50% !important;
     margin: 0px 20px;
     margin-left: 20%;
+  }
+}
+@media screen and (max-width:600px){
+  .zoomImage_container{
+    width: 94vw !important;
+  }
+  .zoomImage{
+    width: 47vw !important;
   }
 }
 @media screen and (max-width: 400px){
@@ -255,6 +272,11 @@ p{
   .item_container{
     width: 70% !important;
     margin-right: 10% !important;
+  }
+}
+@media screen and (max-width:500px){
+  .zoomImage{
+    width: 93vw !important;
   }
 }
 .products_list{
@@ -408,4 +430,25 @@ p{
   color: blue;
   border-radius: 10px;
   cursor: pointer;
+}
+.zoomImage_container{
+  position: absolute;
+  height: 63vh;
+  width: 70vw;
+}
+.zoomImage{
+  height: 63vh;
+  width: 35vw;
+}
+.cancel_btn{
+    font-size: larger;
+    font-weight: 700;
+    cursor: pointer;
+    position: absolute;
+    z-index: 1;
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 10px;
+    top: -48px;
 }

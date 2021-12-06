@@ -5,13 +5,17 @@ import 'react-medium-image-zoom/dist/styles.css';
 const ZoomImage = (props) => {
     const { picture, handleZoom } = props;
     return (
-        <div>
-            <p onClick={ () => handleZoom() }>Cancel</p>
+        <div className="zoomImage_container">
+            <p onClick={ () => handleZoom() }className="cancel_btn" >Cancel</p>
             <Zoom>
                 <img
                 alt="that wanaka tree"
                 src={picture}
-                width="500"
+                // style={{ width: '50vw', height:'50vh'}}
+                className="zoomImage"
+                // width="300"
+                // position="absolute"
+                // left="30%"
                 />
             </Zoom>
         </div>

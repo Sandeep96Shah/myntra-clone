@@ -74,6 +74,7 @@ const ProductDetail = (props) => {
         }
 
         return (
+            <div>
            <div className="detail_outer_container">
                 <div className="detail_container">
                 <div className="detail_image">
@@ -104,9 +105,11 @@ const ProductDetail = (props) => {
                     </div>
                 </div>
                 </div>
-                {/* { showZoom && <ZoomImage picture={image} handleZoom={handleZoom} />} */}
-            </div> 
-            // <ZoomImage picture={image} handleZoom={handleZoom} /> }
+                 { showZoom && <ZoomImage picture={image} handleZoom={handleZoom} />}
+            </div> :
+            {/* <ZoomImage picture={image} handleZoom={handleZoom} /> } */}
+            </div>
+            //
         
         )
 }
